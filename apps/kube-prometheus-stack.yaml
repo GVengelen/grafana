@@ -11,6 +11,8 @@ spec:
     targetRevision: "*"
     helm:
       values: |
+        cluster:
+          name: my-cluster-name
         prometheus:
           enabled: true
         grafana:

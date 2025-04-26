@@ -11,6 +11,8 @@ spec:
     targetRevision: "*"
     helm:
       values: |
+        cluster:
+          name: my-cluster-name
         grafana:
           additionalDataSources:
             - name: Prometheus

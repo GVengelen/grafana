@@ -11,6 +11,8 @@ spec:
     targetRevision: "*"
     helm:
       values: |
+        cluster:
+          name: my-cluster-name
         # Add custom values as needed
   destination:
     server: https://kubernetes.default.svc
