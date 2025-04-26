@@ -10,8 +10,8 @@ spec:
     chart: tempo
     targetRevision: "*"
     helm:
-      valueFiles:
-        - tempo-values.yaml
+      values: |
+        # Add custom values as needed
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

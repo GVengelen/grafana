@@ -10,8 +10,8 @@ spec:
     chart: loki
     targetRevision: "*"
     helm:
-      valueFiles:
-        - loki-values.yaml
+      values: |
+        # Add custom values as needed
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
