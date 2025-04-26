@@ -11,7 +11,7 @@ spec:
     targetRevision: "*"
     helm:
       valueFiles:
-        - ../../charts/loki-values.yaml
+        - loki-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

@@ -11,7 +11,7 @@ spec:
     targetRevision: "*"
     helm:
       valueFiles:
-        - ../../charts/k8s-monitoring-helm-values.yaml
+        - k8s-monitoring-helm-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

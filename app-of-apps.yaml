@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-org/your-gitops-repo.git' # Update to your repo URL
+    repoURL: 'https://github.com/GVengelen/grafana.git' # Update to your repo URL
     targetRevision: HEAD
     path: apps
   destination:
