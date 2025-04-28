@@ -11,6 +11,9 @@ spec:
     targetRevision: "*"
     helm:
       values: |
+        features:
+          clusterMetrics: 
+            enabled: true
         cluster:
           name: my-cluster-name
         grafana:
