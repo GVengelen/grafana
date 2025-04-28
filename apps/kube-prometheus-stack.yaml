@@ -10,6 +10,7 @@ spec:
     chart: kube-prometheus-stack
     targetRevision: "*"
     helm:
+      skipCrds: true
       values: |
         cluster:
           name: my-cluster-name
