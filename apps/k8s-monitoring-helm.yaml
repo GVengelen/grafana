@@ -13,6 +13,9 @@ spec:
       values: |
         clusterMetrics: 
           enabled: true
+          node-exporter:
+            service:
+              port: 9123 
         cluster:
           name: my-cluster-name
         destinations:
