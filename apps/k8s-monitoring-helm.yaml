@@ -15,16 +15,16 @@ spec:
           enabled: true
         cluster:
           name: my-cluster-name
-        grafana:
-          additionalDataSources:
-            - name: Loki
-              type: loki
-              access: proxy
-              url: http://loki.monitoring.svc.cluster.local:3100
-            - name: Tempo
-              type: tempo
-              access: proxy
-              url: http://tempo.monitoring.svc.cluster.local:3100
+        destinations:
+        - name: Prometheus
+          type: prometheus
+          url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+        - name: Loki
+          type: loki
+          url: http://loki.monitoring.svc.cluster.local:3100
+        - name: Tempo
+          type: tempo
+          url: http://tempo.monitoring.svc.cluster.local:3100
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

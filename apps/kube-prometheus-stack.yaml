@@ -10,7 +10,6 @@ spec:
     chart: kube-prometheus-stack
     targetRevision: "*"
     helm:
-      skipCrds: true
       values: |
         cluster:
           name: my-cluster-name
@@ -19,11 +18,17 @@ spec:
         grafana:
           enabled: true
           additionalDataSources:
+            - name: Prometheus
+              type: prometheus
+              access: proxy
+              url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+              isDefault: true
             - name: Loki
               type: loki
               access: proxy
               url: http://loki.monitoring.svc.cluster.local:3100
             - name: Tempo
+              type: tempo
               access: proxy
               url: http://tempo.monitoring.svc.cluster.local:3100
         alertmanager:
@@ -31,11 +36,6 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
-  ignoreDifferences:
-    - group: apiextensions.k8s.io
-      kind: CustomResourceDefinition
-      jsonPointers:
-        - /metadata/annotations
   syncPolicy:
     automated:
       prune: true
