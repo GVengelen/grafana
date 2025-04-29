@@ -1,22 +1,22 @@
-# Values for kube-prometheus-stack
-# Enable Grafana, Prometheus, and Alertmanager
-prometheus:
-  enabled: true
-grafana:
-  enabled: true
-  additionalDataSources:
-    - name: Prometheus
-      type: prometheus
-      access: proxy
-      url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
-      isDefault: true
-    - name: Loki
-      type: loki
-      access: proxy
-      url: http://loki.monitoring.svc.cluster.local:3100
-    - name: Tempo
-      type: tempo
-      access: proxy
-      url: http://tempo.monitoring.svc.cluster.local:3100
-alertmanager:
-  enabled: true
+# # Values for kube-prometheus-stack
+# # Enable Grafana, Prometheus, and Alertmanager
+# prometheus:
+#   enabled: true
+# grafana:
+#   enabled: true
+#   additionalDataSources:
+#     - name: Prometheus
+#       type: prometheus
+#       access: proxy
+#       url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+#       isDefault: true
+#     - name: Loki
+#       type: loki
+#       access: proxy
+#       url: http://loki.monitoring.svc.cluster.local:3100
+#     - name: Tempo
+#       type: tempo
+#       access: proxy
+#       url: http://tempo.monitoring.svc.cluster.local:3100
+# alertmanager:
+#   enabled: true
