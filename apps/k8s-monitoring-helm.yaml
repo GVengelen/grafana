@@ -25,6 +25,8 @@ spec:
         - name: Tempo
           type: otlp
           url: http://tempo.monitoring.svc.cluster.local:3100
+        alloy-metrics:
+          enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
