@@ -15,7 +15,15 @@ spec:
           enabled: true
           node-exporter:
             service:
-              port: 9123 
+              port: 9123
+        nodeLogs:
+          enabled: true
+          journal:
+            units:
+              - kubelet.service
+              - containerd.service
+        podLogs:
+          enabled: true
         cluster:
           name: my-cluster-name
         destinations:
