@@ -11,6 +11,7 @@ spec:
     targetRevision: "*"
     helm:
       values: |
+        # Features
         clusterMetrics: 
           enabled: true
           node-exporter:
@@ -36,7 +37,10 @@ spec:
         - name: Tempo
           type: otlp
           url: http://tempo.monitoring.svc.cluster.local:3100
+        # Collectors
         alloy-metrics:
+          enabled: true
+        alloy-logs: 
           enabled: true
   destination:
     server: https://kubernetes.default.svc
