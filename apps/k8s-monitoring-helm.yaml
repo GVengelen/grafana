@@ -23,7 +23,7 @@ spec:
           type: loki
           url: http://loki.monitoring.svc.cluster.local:3100
         - name: Tempo
-          type: tempo
+          type: otlp
           url: http://tempo.monitoring.svc.cluster.local:3100
   destination:
     server: https://kubernetes.default.svc
