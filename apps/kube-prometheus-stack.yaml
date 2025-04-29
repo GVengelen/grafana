@@ -28,6 +28,10 @@ spec:
               url: http://tempo.monitoring.svc.cluster.local:3100
         alertmanager:
           enabled: true
+        kube-state-metrics:
+          enabled: false
+          nodeExporter:
+            enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
