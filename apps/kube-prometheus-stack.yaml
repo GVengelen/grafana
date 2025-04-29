@@ -22,7 +22,10 @@ spec:
               type: loki
               access: proxy
               url: http://loki.monitoring.svc.cluster.local:3100
-              OrgId: "fake"
+              jsonData:
+                httpHeaderName1: "X-Scope-OrgID"
+              secureJsonData:
+                httpHeaderValue1: "fake"
             - name: Tempo
               type: tempo
               access: proxy
