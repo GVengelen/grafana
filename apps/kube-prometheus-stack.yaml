@@ -30,8 +30,8 @@ spec:
           enabled: true
         kube-state-metrics:
           enabled: false
-          nodeExporter:
-            enabled: false
+        nodeExporter:
+          enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

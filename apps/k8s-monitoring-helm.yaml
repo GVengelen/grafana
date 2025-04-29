@@ -30,8 +30,6 @@ spec:
           url: http://tempo.monitoring.svc.cluster.local:3100
         alloy-metrics:
           enabled: true
-        nodeExporter:
-          enabled: false
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
