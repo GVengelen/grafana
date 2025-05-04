@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: faro
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/GVengelen/faro-nextjs-example
+    chart: faro
+    path: charts/faro
+    targetRevision: "*"
+    helm:
+      values: |
+        cluster:
+          name: my-cluster-name
+        prometheus:
+          enabled: true
+        grafana:
+          enabled: true
+          additionalDataSources:
+            - name: Loki
+              type: loki
+              access: proxy
+              url: http://loki.monitoring.svc.cluster.local:3100
+              jsonData:
+                httpHeaderName1: "X-Scope-OrgID"
+              secureJsonData:
+                httpHeaderValue1: "fake"
+            - name: Tempo
+              type: tempo
+              access: proxy
+              url: http://tempo.monitoring.svc.cluster.local:3100
+        alertmanager:
+          enabled: true
+        kube-state-metrics:
+          enabled: false
+        nodeExporter:
+          enabled: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
