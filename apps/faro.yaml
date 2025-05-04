@@ -9,7 +9,7 @@ spec:
     repoURL: https://github.com/GVengelen/faro-nextjs-example
     chart: faro
     path: charts/faro
-    targetRevision: "*"
+    targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
