@@ -10,6 +10,9 @@ spec:
     chart: faro
     path: charts/faro
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
