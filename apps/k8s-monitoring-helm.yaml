@@ -5,13 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://grafana.github.io/helm-charts
-    chart: k8s-monitoring
-    targetRevision: "*"
-    helm:
-      valueFiles:
-      - /helm/k8s-monitoring-helm-values.yaml
+  sources:
+    - repoURL: 'https://git.example.com/org/value-files.git'
+      targetRevision: dev
+      ref: values
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: k8s-monitoring
+      targetRevision: "*"
+      helm:
+        valueFiles:
+          - $values/charts/k8s-monitoring/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
