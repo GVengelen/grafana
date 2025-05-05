@@ -5,13 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://grafana.github.io/helm-charts
-    chart: tempo
-    targetRevision: "*"
-    helm:
-      values: |
-        # TODO run in single binary
+  sources:
+    - repoURL: https://github.com/GVengelen/grafana.git
+      targetRevision: HEAD
+      ref: values
+    - repoURL: https://grafana.github.io/helm-charts
+      chart: tempo
+      targetRevision: "*"
+      helm:
+        valueFiles:
+          - $values/charts/tempo/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
