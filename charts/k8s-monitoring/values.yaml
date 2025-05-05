@@ -3,33 +3,61 @@ cluster:
   name: lgtm
 
 # Features
-clusterMetrics: 
+clusterMetrics:
   enabled: true
   node-exporter:
     service:
       port: 9123
 podLogs:
   enabled: true
-#TODO add Beyla
-#TODO add Application monitoring
-  #Configure Alloy colllector
+autoInstrumentation:
+  enabled: true
+applicationObservability:
+  enabled: true
+  receivers:
+    otlp:
+      grpc:
+        enabled: true
+        port: 4317
+      http:
+        enabled: true
+        port: 4318
+    faro:
+      enabled: true
+      port: 12347
 
 # Datasource destinations
 destinations:
-- name: Prometheus
-  type: prometheus
-  url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
-- name: Loki
-  type: loki
-  url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
-  destinations:
-  tenantId: "fake"
-- name: Tempo
-  type: otlp
-  url: http://tempo.monitoring.svc.cluster.local:3100
+  - name: Prometheus
+    type: prometheus
+    url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+  - name: Loki
+    type: loki
+    url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
+    destinations:
+    tenantId: "fake"
+  - name: Tempo
+    type: otlp
+    url: http://tempo.monitoring.svc.cluster.local:3100
 
 # Collectors
 alloy-metrics:
   enabled: true
-alloy-logs: 
+alloy-logs:
   enabled: true
+alloy-receiver:
+  enabled: true
+  alloy:
+    extraPorts:
+      - name: otlp-grpc
+        port: 4317
+        targetPort: 4317
+        protocol: TCP
+      - name: otlp-http
+        port: 4318
+        targetPort: 4318
+        protocol: TCP
+      - name: "faro"
+        port: 4319
+        targetPort: 4319
+        protocol: "TCP"

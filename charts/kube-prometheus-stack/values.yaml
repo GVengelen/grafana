@@ -5,12 +5,13 @@ cluster:
 # Prometheus config
 prometheus:
   enabled: true
-  #TODO enable remote write for alloy-logs
+  enableRemoteWriteReceiver: true
 
 # Grafana Config
 grafana:
   enabled: true
-  # TODO add admin password
+  adminUser: admin
+  adminPassword: supersecretpassword
   additionalDataSources:
     - name: Loki
       type: loki
@@ -28,6 +29,7 @@ grafana:
         httpHeaderName1: "X-Scope-OrgID"
       secureJsonData:
         httpHeaderValue1: "fake"
+
 # Alertmanager config
 alertmanager:
   enabled: true
