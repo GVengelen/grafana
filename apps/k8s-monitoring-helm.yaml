@@ -10,34 +10,8 @@ spec:
     chart: k8s-monitoring
     targetRevision: "*"
     helm:
-      values: |
-        # Features
-        clusterMetrics: 
-          enabled: true
-          node-exporter:
-            service:
-              port: 9123
-        podLogs:
-          enabled: true
-        cluster:
-          name: lgtm
-        destinations:
-        - name: Prometheus
-          type: prometheus
-          url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
-        - name: Loki
-          type: loki
-          url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
-          destinations:
-          tenantId: "fake"
-        - name: Tempo
-          type: otlp
-          url: http://tempo.monitoring.svc.cluster.local:3100
-        # Collectors
-        alloy-metrics:
-          enabled: true
-        alloy-logs: 
-          enabled: true
+      valueFiles:
+      - /helm/k8s-monitoring-helm-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

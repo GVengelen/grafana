@@ -11,12 +11,19 @@ spec:
     targetRevision: "*"
     helm:
       values: |
+        # General config
         cluster:
           name: my-cluster-name
+
+        # Prometheus config
         prometheus:
           enabled: true
+          #TODO enable remote write for alloy-logs
+
+        # Grafana Config
         grafana:
           enabled: true
+          # TODO add admin password
           additionalDataSources:
             - name: Loki
               type: loki
@@ -30,12 +37,20 @@ spec:
               type: tempo
               access: proxy
               url: http://tempo.monitoring.svc.cluster.local:3100
+              jsonData:
+                httpHeaderName1: "X-Scope-OrgID"
+              secureJsonData:
+                httpHeaderValue1: "fake"
+        # Alertmanager config
         alertmanager:
           enabled: true
+
+        # Disable conflicting features
         kube-state-metrics:
           enabled: false
         nodeExporter:
           enabled: false
+        
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring

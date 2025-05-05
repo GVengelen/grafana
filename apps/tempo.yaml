@@ -11,9 +11,7 @@ spec:
     targetRevision: "*"
     helm:
       values: |
-        cluster:
-          name: my-cluster-name
-        # Add custom values as needed
+        # TODO run in single binary
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
