@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: 'https://git.example.com/org/value-files.git'
+    - repoURL: https://github.com/GVengelen/grafana.git
       targetRevision: dev
       ref: values
     - repoURL: https://grafana.github.io/helm-charts
