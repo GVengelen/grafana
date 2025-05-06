@@ -41,8 +41,8 @@ destinations:
     url: http://tempo.monitoring.svc.cluster.local:3100
     tenantId: "fake"
     tls:
-    insecure: true
-    insecureSkipVerify: true
+      insecure: true
+      insecureSkipVerify: true
 
 # Collectors
 alloy-metrics:
