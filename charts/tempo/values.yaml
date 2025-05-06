@@ -1,0 +1,24 @@
+tempo:
+  server:
+    http_listen_port: 3100
+    grpc_server_max_recv_msg_size: 104857600 # 100MB in bytes
+
+  receivers:
+    jaeger:
+      protocols:
+        grpc:
+          endpoint: 0.0.0.0:14250
+        thrift_binary:
+          endpoint: 0.0.0.0:6832
+        thrift_compact:
+          endpoint: 0.0.0.0:6831
+        thrift_http:
+          endpoint: 0.0.0.0:14268
+    opencensus:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: "0.0.0.0:4317"
+          max_recv_msg_size_mib: 100 # 100MB
+        http:
+          endpoint: "0.0.0.0:4318"
