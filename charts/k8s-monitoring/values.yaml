@@ -23,7 +23,7 @@ applicationObservability:
         port: 4318
     faro:
       enabled: true
-      port: 12347
+      port: 4319
 
 # Datasource destinations
 destinations:
