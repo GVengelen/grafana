@@ -38,7 +38,7 @@ destinations:
   - name: Tempo
     type: otlp
     protocol: http
-    url: http://tempo.monitoring.svc.cluster.local:3100
+    url: http://tempo.monitoring.svc.cluster.local:4318
     tenantId: "fake"
     tls:
       insecure: true
