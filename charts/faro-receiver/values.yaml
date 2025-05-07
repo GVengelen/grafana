@@ -24,9 +24,6 @@ alloy:
       loki.write "default" {
           endpoint {
               url = "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
-              headers = {
-                  "X-Scope-OrgID" = "tenant1"
-              }
           }
           tenant_id = "fake"
       }
@@ -34,9 +31,6 @@ alloy:
       otelcol.exporter.otlp "traces" {
           client {
               endpoint = " http://tempo.monitoring.svc.cluster.local:4318"
-              headers = {
-                  "X-Scope-OrgID" = "tenant1"
-              }
           }
       }
 
