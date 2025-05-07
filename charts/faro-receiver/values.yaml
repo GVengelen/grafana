@@ -16,38 +16,39 @@ alloy:
           }
 
           output {
-              logs   = [loki.write.default.receiver]
-              traces = [otelcol.exporter.otlp.traces.input]
+              logs   = [loki.write.loki.receiver]
+              traces = [otelcol.exporter.otlphttp.tempo.input]
           }
       }
 
       loki.write "loki" {
-      endpoint {
-          url = "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
-          tenant_id = "fake"
-          tls_config {
-          insecure_skip_verify = false
-          }
-          min_backoff_period = "500ms"
-          max_backoff_period = "5m"
-          max_backoff_retries = "10"
-      }
-      external_labels = {
-          "cluster" = "lgtm",
-          "k8s_cluster_name" = "lgtm",
+        endpoint {
+            url = "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
+            tenant_id = "fake"
+            tls_config {
+              insecure_skip_verify = false
+            }
+            min_backoff_period = "500ms"
+            max_backoff_period = "5m"
+            max_backoff_retries = "10"
+        }
+        external_labels = {
+            "cluster" = "lgtm",
+            "k8s_cluster_name" = "lgtm",
         }
       }
 
       otelcol.exporter.otlphttp "tempo" {
-      client {
-          endpoint = "http://tempo.monitoring.svc.cluster.local:4318"
-          headers = {
-          "X-Scope-OrgID" = "fake"),
-          }
-          tls {
-          insecure = true
-          insecure_skip_verify = true
-          }
+        client {
+            endpoint = "http://tempo.monitoring.svc.cluster.local:4318"
+            headers = {
+              "X-Scope-OrgID" = "fake",
+            }
+            tls {
+              insecure = true
+              insecure_skip_verify = true
+            }
+        }
       }
 
   listenAddr: 0.0.0.0
