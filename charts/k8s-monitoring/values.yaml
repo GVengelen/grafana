@@ -21,9 +21,6 @@ applicationObservability:
       http:
         enabled: true
         port: 4318
-    faro:
-      enabled: true
-      port: 4319
 
 # Datasource destinations
 destinations:
@@ -57,7 +54,3 @@ alloy-receiver:
         port: 4318
         targetPort: 4318
         protocol: TCP
-      - name: "faro"
-        port: 4319
-        targetPort: 4319
-        protocol: "TCP"
