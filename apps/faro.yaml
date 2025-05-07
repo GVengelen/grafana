@@ -12,6 +12,9 @@ spec:
     helm:
       valueFiles:
         - values.yaml
+      values: |
+        image:
+          tag: d2370ca
   destination:
     server: https://kubernetes.default.svc
     namespace: faro
