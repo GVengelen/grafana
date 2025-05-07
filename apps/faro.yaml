@@ -14,7 +14,7 @@ spec:
         - values.yaml
       values: |
         image:
-          tag: 548b4b8
+          tag: 57cf7ad
   destination:
     server: https://kubernetes.default.svc
     namespace: faro
