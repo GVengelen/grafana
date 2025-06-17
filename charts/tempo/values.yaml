@@ -25,6 +25,18 @@ tempo:
 
   metricsGenerator:
     enabled: true
+    storage:
+      path: "/var/tempo/generator/wal"
+      remote_write_flush_deadline: 1m
+    processor:
+      service_graphs:
+        max_items: 10000
+        wait: 10s
+        workers: 10
+        dimensions:
+          - client
+          - server
+          - connection_type
 
   overrides:
     defaults:
@@ -33,6 +45,13 @@ tempo:
           - service-graphs
           - span-metrics
           - local-blocks
+        storage:
+          path: "/var/tempo/generator/wal"
+        processor:
+          service_graphs:
+            max_items: 10000
+            wait: 10s
+            workers: 10
 
 serviceMonitor:
   enabled: true
