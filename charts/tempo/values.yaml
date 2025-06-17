@@ -1,6 +1,6 @@
 tempo:
   server:
-    http_listen_port: 3100
+    http_listen_port: 3200
     grpc_server_max_recv_msg_size: 104857600 # 100MB in bytes
 
   receivers:
