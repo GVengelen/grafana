@@ -47,16 +47,7 @@ tempo:
           - local-blocks
         storage:
           path: "/var/tempo/generator/wal"
-        processor:
-          service_graphs:
-            max_items: 10000
-            wait: 10s
-            workers: 10 
-        registry:  
-          collection_interval: 15s  
-        remote_write:  
-          - url: http://kube-prometheus-stack-prometheus.monitoring:9090/api/v1/write  
-            send_exemplars: true  
+        remoteWriteUrl: http://kube-prometheus-stack-prometheus.monitoring:9090/api/v1/write  
 
 serviceMonitor:
   enabled: true
