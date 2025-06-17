@@ -22,3 +22,6 @@ tempo:
           max_recv_msg_size_mib: 100 # 100MB
         http:
           endpoint: "0.0.0.0:4318"
+
+metricsGenerator:
+  enabled: true
