@@ -31,12 +31,12 @@ destinations:
     type: loki
     url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
     destinations:
-    tenantId: "single-tenant"
+    tenantId: "fake"
   - name: Tempo
     type: otlp
     protocol: http
     url: http://tempo.monitoring.svc.cluster.local:4318
-    tenantId: "single-tenant"
+    tenantId: "fake"
     tls:
       insecure: true
       insecureSkipVerify: true

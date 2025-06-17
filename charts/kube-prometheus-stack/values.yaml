@@ -20,7 +20,7 @@ grafana:
       jsonData:
         httpHeaderName1: "X-Scope-OrgID"
       secureJsonData:
-        httpHeaderValue1: "single-tenant"
+        httpHeaderValue1: "fake"
     - name: Tempo
       type: tempo
       access: proxy
@@ -31,7 +31,7 @@ grafana:
         serviceMap:
           datasourceUid: "prometheus"
       secureJsonData:
-        httpHeaderValue1: "single-tenant"
+        httpHeaderValue1: "fake"
 
 # Alertmanager config
 alertmanager:

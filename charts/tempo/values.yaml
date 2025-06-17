@@ -41,14 +41,14 @@ tempo:
           - connection_type
 
   per_tenant_overrides:
-    'single-tenant':
+    'fake':
       metrics_generator:
         processors:
           - service-graphs
           - span-metrics
           - local-blocks
         remote_write_headers:
-          X-Scope-OrgID: single-tenant
+          X-Scope-OrgID: fake
 
 serviceMonitor:
   enabled: true
