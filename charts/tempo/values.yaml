@@ -41,8 +41,9 @@ tempo:
           - server
           - connection_type
 
-  overrides:
-    defaults:
+
+  per_tenant_overrides:
+    'fake':
       metrics_generator:
         processors:
           - service-graphs
