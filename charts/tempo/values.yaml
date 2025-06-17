@@ -1,4 +1,5 @@
 tempo:
+  multitenancyEnabled: true
   server:
     http_listen_port: 3200
     grpc_server_max_recv_msg_size: 104857600 # 100MB in bytes
@@ -26,7 +27,6 @@ tempo:
   metricsGenerator:
     enabled: true
     remoteWriteUrl: http://kube-prometheus-stack-prometheus.monitoring:9090/api/v1/write
-    tenant: "fake"
     storage:
       path: "/var/tempo/generator/wal"
       remote_write_flush_deadline: 1m
