@@ -47,6 +47,8 @@ tempo:
           - service-graphs
           - span-metrics
           - local-blocks
+        remote_write_headers:
+          X-Scope-OrgID: fake
 
 serviceMonitor:
   enabled: true
