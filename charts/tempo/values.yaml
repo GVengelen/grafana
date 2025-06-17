@@ -50,7 +50,7 @@ tempo:
 serviceMonitor:
   enabled: true
   namespace: monitoring
-  labels:
+  additionalLabels:
     release: kube-prometheus-stack
   interval: 15s
   scrapeTimeout: 10s
