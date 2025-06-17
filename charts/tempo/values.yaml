@@ -46,3 +46,11 @@ tempo:
           - service-graphs
           - span-metrics
           - local-blocks
+
+serviceMonitor:
+  enabled: true
+  namespace: monitoring
+  additionalLabels:
+    release: kube-prometheus-stack
+  interval: 15s
+  scrapeTimeout: 10s
