@@ -34,7 +34,7 @@ tempo:
     processor:
       service_graphs:
         max_items: 10000
-        wait: 10s
+        wait: 60s
         workers: 10
         dimensions:
           - client
