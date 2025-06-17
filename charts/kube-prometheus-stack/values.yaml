@@ -24,7 +24,7 @@ grafana:
     - name: Tempo
       type: tempo
       access: proxy
-      url: http://tempo.monitoring.svc.cluster.local:3100
+      url: http://tempo.monitoring.svc.cluster.local:3200
       jsonData:
         httpHeaderName1: "X-Scope-OrgID"
       secureJsonData:
