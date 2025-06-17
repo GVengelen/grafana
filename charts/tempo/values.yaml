@@ -34,11 +34,10 @@ tempo:
           - span-metrics
           - local-blocks
 
-metaMonitoring:
-  serviceMonitor:
-    enabled: true
-    namespace: monitoring
-    labels:
-      release: kube-prometheus-stack
-    interval: 15s
-    scrapeTimeout: 10s
+serviceMonitor:
+  enabled: true
+  namespace: monitoring
+  labels:
+    release: kube-prometheus-stack
+  interval: 15s
+  scrapeTimeout: 10s
