@@ -1,5 +1,4 @@
 tempo:
-  multitenancyEnabled: true
   server:
     http_listen_port: 3200
     grpc_server_max_recv_msg_size: 104857600 # 100MB in bytes
@@ -40,15 +39,13 @@ tempo:
           - server
           - connection_type
 
-  per_tenant_overrides:
-    'fake':
+  overrides:
+    defaults:
       metrics_generator:
         processors:
           - service-graphs
           - span-metrics
           - local-blocks
-        remote_write_headers:
-          X-Scope-OrgID: fake
 
 serviceMonitor:
   enabled: true
