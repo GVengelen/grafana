@@ -1,5 +1,5 @@
 tempo:
-  multitenancy_enabled: true
+  multitenancyEnabled: true
 
   server:
     http_listen_port: 3200
