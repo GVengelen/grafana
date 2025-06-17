@@ -24,7 +24,7 @@ alloy:
       loki.write "loki" {
         endpoint {
             url = "http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push"
-            tenant_id = "fake"
+            tenant_id = "single-tenant"
             tls_config {
               insecure_skip_verify = false
             }
@@ -42,7 +42,7 @@ alloy:
         client {
             endpoint = "http://tempo.monitoring.svc.cluster.local:4318"
             headers = {
-              "X-Scope-OrgID" = "fake",
+              "X-Scope-OrgID" = "single-tenant",
             }
             tls {
               insecure = true

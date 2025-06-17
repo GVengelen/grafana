@@ -20,7 +20,7 @@ grafana:
       jsonData:
         httpHeaderName1: "X-Scope-OrgID"
       secureJsonData:
-        httpHeaderValue1: "fake"
+        httpHeaderValue1: "single-tenant"
     - name: Tempo
       type: tempo
       access: proxy
