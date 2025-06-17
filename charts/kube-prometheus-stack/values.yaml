@@ -27,6 +27,9 @@ grafana:
       url: http://tempo.monitoring.svc.cluster.local:3200
       jsonData:
         httpHeaderName1: "X-Scope-OrgID"
+        httpMethod: GET
+        serviceMap:
+          datasourceUid: "prometheus"
       secureJsonData:
         httpHeaderValue1: "fake"
 
