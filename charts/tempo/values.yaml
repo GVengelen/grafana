@@ -28,18 +28,6 @@ tempo:
   metricsGenerator:
     enabled: true
     remoteWriteUrl: http://kube-prometheus-stack-prometheus.monitoring:9090/api/v1/write
-    storage:
-      path: "/var/tempo/generator/wal"
-      remote_write_flush_deadline: 1m
-    processor:
-      service_graphs:
-        max_items: 10000
-        wait: 60s
-        workers: 10
-        dimensions:
-          - client
-          - server
-          - connection_type
 
   overrides:
     defaults:
