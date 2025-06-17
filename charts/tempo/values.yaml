@@ -23,5 +23,5 @@ tempo:
         http:
           endpoint: "0.0.0.0:4318"
 
-metricsGenerator:
-  enabled: true
+  metricsGenerator:
+    enabled: true
