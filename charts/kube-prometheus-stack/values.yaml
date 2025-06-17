@@ -31,7 +31,7 @@ grafana:
         serviceMap:
           datasourceUid: "prometheus"
       secureJsonData:
-        httpHeaderValue1: "fake"
+        httpHeaderValue1: "single-tenant"
 
 # Alertmanager config
 alertmanager:
