@@ -36,6 +36,9 @@ tempo:
           - service-graphs
           - span-metrics
           - local-blocks
+        processor:
+          servservice_graphs:
+            wait: 30s
         remote_write_headers:
           X-Scope-OrgID: fake
 
