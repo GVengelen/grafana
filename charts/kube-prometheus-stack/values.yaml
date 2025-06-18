@@ -1,6 +1,6 @@
 # General config
 cluster:
-  name: my-cluster-name
+  name: lgtm
 
 # Prometheus config
 prometheus:
