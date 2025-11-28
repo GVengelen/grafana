@@ -6,7 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "5"
 spec:
-  project: argocd
+  project: default
   source:
     repoURL: "https://github.com/GVengelen/grafana.git"
     path: alerts
