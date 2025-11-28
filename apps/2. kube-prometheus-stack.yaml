@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   sources:
-    # - repoURL: https://github.com/GVengelen/grafana.git
-    #   targetRevision: HEAD
-    #   ref: values
+    - repoURL: https://github.com/GVengelen/grafana.git
+      targetRevision: HEAD
+      ref: values
     - chart: mimir-distributed
       repoURL: https://grafana.github.io/helm-charts
       targetRevision: "*"
