@@ -1,11 +1,20 @@
 alertmanager:
   replicas: 1
+  resources: {}
+  statefulSet:
+    enabled: true
+
+compactor:
+  resources: {}
 
 distributor:
   replicas: 1
+  resources: {}
 
 ingester:
   replicas: 3
+  resources: {}
+
   zoneAwareReplication:
     enabled: false
 
@@ -16,36 +25,46 @@ chunks-cache:
   enabled: false
 
 index-cache:
-  enabled: true
-  replicas: 1
+  enabled: false
 
 metadata-cache:
-  enabled: true
-  replicas: 1
+  enabled: false
 
 results-cache:
-  enabled: true
-  replicas: 1
+  enabled: false
+
+minio:
+  enabled: false
 
 overrides_exporter:
   replicas: 1
+  resources: {}
 
 querier:
   replicas: 1
+  resources: {}
 
 query_frontend:
   replicas: 1
+  resources: {}
 
 ruler:
   replicas: 1
+  resources: {}
 
 store_gateway:
   zoneAwareReplication:
     enabled: false
+  persistentVolume:
+    size: 10Gi
   replicas: 3
+  resources: {}
 
 nginx:
+  image:
+    registry: crpxpssiproxyweuprd001.azurecr.io/docker.io
   replicas: 1
+  resources: {}
 
 mimir:
   structuredConfig:
@@ -53,4 +72,4 @@ mimir:
 
 serviceAccount:
   create: false
-  name: minio-sa
+  name: observability-storage
