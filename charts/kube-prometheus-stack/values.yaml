@@ -1,3 +1,6 @@
 mimir:
   structuredConfig:
     multitenancy_enabled: false
+
+serviceAccount:
+  create: false
