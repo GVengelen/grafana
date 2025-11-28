@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alerts
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+spec:
+  project: argocd
+  source:
+    repoURL: "https://github.com/GVengelen/grafana.git"
+    path: alerts
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+    automated:
+      selfHeal: true
+      prune: true
+    retry:
+      limit: 2
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
