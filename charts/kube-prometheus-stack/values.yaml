@@ -53,4 +53,4 @@ mimir:
 
 serviceAccount:
   create: false
-  name: observability-storage
+  name: minio-sa
