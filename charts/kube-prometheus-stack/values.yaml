@@ -33,9 +33,6 @@ metadata-cache:
 results-cache:
   enabled: false
 
-minio:
-  enabled: false
-
 overrides_exporter:
   replicas: 1
   resources: {}
