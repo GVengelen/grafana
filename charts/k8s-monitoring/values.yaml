@@ -46,7 +46,7 @@ alloy-metrics:
   enabled: true
   extraConfig: |-
     mimir.rules.kubernetes "local" {
-      address = "http://mimir-ruler.observability.svc.cluster.local:8080"
+      address = "http://mimir-ruler.monitoring.svc.cluster.local:8080"
       rule_namespace_selector {
         match_labels = {
           "kubernetes.io/metadata.name" = "observability",
