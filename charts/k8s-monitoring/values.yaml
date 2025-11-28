@@ -49,7 +49,7 @@ alloy-metrics:
       address = "http://mimir-ruler.monitoring.svc.cluster.local:8080"
       rule_namespace_selector {
         match_labels = {
-          "kubernetes.io/metadata.name" = "observability",
+          "kubernetes.io/metadata.name" = "monitoring",
         }
       }
       rule_selector {
