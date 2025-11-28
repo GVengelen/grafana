@@ -1,6 +1,56 @@
+alertmanager:
+  replicas: 1
+
+distributor:
+  replicas: 1
+
+ingester:
+  replicas: 3
+  zoneAwareReplication:
+    enabled: false
+
+admin-cache:
+  enabled: false
+
+chunks-cache:
+  enabled: false
+
+index-cache:
+  enabled: true
+  replicas: 1
+
+metadata-cache:
+  enabled: true
+  replicas: 1
+
+results-cache:
+  enabled: true
+  replicas: 1
+
+overrides_exporter:
+  replicas: 1
+
+querier:
+  replicas: 1
+
+query_frontend:
+  replicas: 1
+
+ruler:
+  replicas: 1
+
+store_gateway:
+  zoneAwareReplication:
+    enabled: false
+  replicas: 3
+
+nginx:
+  replicas: 1
+
 mimir:
   structuredConfig:
     multitenancy_enabled: false
 
 serviceAccount:
   create: false
+  name: observability-storage
