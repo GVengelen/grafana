@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prometheus-stack
+  name: mimir
   namespace: argocd
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/GVengelen/grafana.git
-      targetRevision: HEAD
-      ref: values
-    - repoURL: https://prometheus-community.github.io/helm-charts
-      chart: kube-prometheus-stack
+    # - repoURL: https://github.com/GVengelen/grafana.git
+    #   targetRevision: HEAD
+    #   ref: values
+    - chart: mimir-distributed
+      repoURL: https://grafana.github.io/helm-charts
       targetRevision: "*"
-      helm:
-        valueFiles:
-          - $values/charts/kube-prometheus-stack/values.yaml
+      # helm:
+      #   valueFiles:
+      #     - $values/charts/kube-prometheus-stack/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
