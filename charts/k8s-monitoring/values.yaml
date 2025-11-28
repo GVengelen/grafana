@@ -44,6 +44,21 @@ destinations:
 # Collectors
 alloy-metrics:
   enabled: true
+  extraConfig: |-
+    mimir.rules.kubernetes "local" {
+      address = "http://mimir-ruler.observability.svc.cluster.local:8080"
+      rule_namespace_selector {
+        match_labels = {
+          "kubernetes.io/metadata.name" = "observability",
+        }
+      }
+      rule_selector {
+        match_labels = {
+          "alloy" = "yes",
+        }
+      }
+    }
+
 alloy-logs:
   enabled: true
 alloy-receiver:
