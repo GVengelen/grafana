@@ -89,12 +89,12 @@ We want to minimize traffic between the regional clusters and our main Grafana i
 
 ### Grafana
 
-This is a Grafana example, so it makes sense we're going to deploy Grafana. In this example we choose for a cluster deployed instance managed by kube-prometheus-stack. But you can choose to use any form of Grafana that you want, Azure Managed Grafana, Grafana Cloud, Grafana on a VM, etc.
+This is a Grafana example, so it makes sense we're going to deploy Grafana. In this example we choose for a cluster deployed instance. But you can choose to use any form of Grafana that you want, Azure Managed Grafana, Grafana Cloud, Grafana on a VM, etc.
 
 If you want to login to grafana in this cluster
 
 ```bash
-kubectl port-forward svc/grafana-server -n monitoring 3000:3000
+kubectl port-forward svc/grafana -n monitoring 3000:80
 ```
 
 username: admin
