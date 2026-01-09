@@ -1,5 +1,4 @@
 admin:
-  existingSecret: ""
   userKey: admin
   passwordKey: supersecretpassword
 grafana.ini:
