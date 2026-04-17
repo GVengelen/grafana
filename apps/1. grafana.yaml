@@ -25,6 +25,9 @@ spec:
       namespace: monitoring
       jsonPointers:
         - /data
+        - /metadata/annotations/kubectl.kubernetes.io~1last-applied-configuration
+      jqPathExpressions:
+        - .data
   syncPolicy:
     automated:
       prune: true
