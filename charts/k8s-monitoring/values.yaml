@@ -5,15 +5,19 @@ cluster:
 # Features
 clusterMetrics:
   enabled: true
-  node-exporter:
-    service:
-      port: 9123
-podLogs:
+  collector: alloy-metrics
+hostMetrics:
   enabled: true
+  collector: alloy-metrics
+podLogsViaLoki:
+  enabled: true
+  collector: alloy-logs
 autoInstrumentation:
   enabled: true
+  collector: alloy-receiver
 applicationObservability:
   enabled: true
+  collector: alloy-receiver
   receivers:
     otlp:
       grpc:
@@ -24,15 +28,14 @@ applicationObservability:
 
 # Datasource destinations
 destinations:
-  - name: Prometheus
+  prometheus:
     type: prometheus
     url: http://mimir-distributor.monitoring.svc.cluster.local:8080/api/v1/push
-  - name: Loki
+  loki:
     type: loki
     url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
-    destinations:
     tenantId: "fake"
-  - name: Tempo
+  tempo:
     type: otlp
     protocol: http
     url: http://tempo.monitoring.svc.cluster.local:4318
@@ -42,30 +45,46 @@ destinations:
       insecureSkipVerify: true
 
 # Collectors
-alloy-metrics:
-  enabled: true
-  extraConfig: |-
-    mimir.rules.kubernetes "local" {
-      address = "http://mimir-ruler.monitoring.svc.cluster.local:8080"
-      rule_namespace_selector {
-        match_labels = {
-          "kubernetes.io/metadata.name" = "monitoring",
+collectors:
+  alloy-metrics:
+    enabled: true
+    presets:
+      - clustered
+      - statefulset
+    extraConfig: |-
+      mimir.rules.kubernetes "local" {
+        address = "http://mimir-ruler.monitoring.svc.cluster.local:8080"
+        rule_namespace_selector {
+          match_labels = {
+            "kubernetes.io/metadata.name" = "monitoring",
+          }
+        }
+        rule_selector {
+          match_labels = {
+            "alloy" = "yes",
+          }
         }
       }
-      rule_selector {
-        match_labels = {
-          "alloy" = "yes",
-        }
-      }
-    }
+  alloy-logs:
+    enabled: true
+    presets:
+      - filesystem-log-reader
+      - daemonset
+  alloy-receiver:
+    enabled: true
+    presets:
+      - deployment
+    alloy:
+      extraPorts:
+        - name: otlp-http
+          port: 4318
+          targetPort: 4318
+          protocol: TCP
 
-alloy-logs:
-  enabled: true
-alloy-receiver:
-  enabled: true
-  alloy:
-    extraPorts:
-      - name: otlp-http
-        port: 4318
-        targetPort: 4318
-        protocol: TCP
+telemetryServices:
+  kube-state-metrics:
+    deploy: true
+  node-exporter:
+    deploy: true
+    service:
+      port: 9123

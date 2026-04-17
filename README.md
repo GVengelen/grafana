@@ -75,9 +75,8 @@ kubectl port-forward svc/argocd-server -n argocd 8080:80
 
 And use credentials from:
 
-```bash
-kubectl get secret argocd-initial-admin-secret  -n argocd -o yaml
-```
+````bash
+ech```
 
 ### Prometheus
 
@@ -95,7 +94,7 @@ If you want to login to grafana in this cluster
 
 ```bash
 kubectl port-forward svc/grafana -n monitoring 3000:80
-```
+````
 
 username: admin
 password: supersecretpassword
