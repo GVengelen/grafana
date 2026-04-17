@@ -1,6 +1,8 @@
 admin:
   userKey: admin-user
   passwordKey: admin-password
+adminUser: admin
+adminPassword: supersecretpassword
 grafana.ini:
   auth:
     managed_service_accounts_enabled: true
