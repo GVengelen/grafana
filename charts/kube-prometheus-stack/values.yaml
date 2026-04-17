@@ -12,7 +12,7 @@ distributor:
   resources: {}
 
 ingester:
-  replicas: 3
+  replicas: 1
   resources: {}
 
   zoneAwareReplication:
@@ -54,7 +54,7 @@ store_gateway:
     enabled: false
   persistentVolume:
     size: 10Gi
-  replicas: 3
+  replicas: 1
   resources: {}
 
 nginx:
