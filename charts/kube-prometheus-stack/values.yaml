@@ -64,23 +64,7 @@ nginx:
   resources: {}
 
 gateway:
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 0
-      maxUnavailable: 1
-  affinity:
-    podAntiAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-        - weight: 100
-          podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-                - key: app.kubernetes.io/component
-                  operator: In
-                  values:
-                    - gateway
-            topologyKey: kubernetes.io/hostname
+  enabled: false
 
 mimir:
   structuredConfig:
