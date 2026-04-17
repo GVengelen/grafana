@@ -3,8 +3,6 @@ admin:
   passwordKey: admin-password
 adminUser: admin
 adminPassword: supersecretpassword
-image:
-  tag: "13.0"
 grafana.ini:
   auth:
     managed_service_accounts_enabled: true
