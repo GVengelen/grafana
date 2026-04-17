@@ -13,7 +13,7 @@ spec:
       ref: values
     - repoURL: https://grafana.github.io/helm-charts
       chart: tempo
-      targetRevision: "2.0.0"
+      targetRevision: "2.14.4"
       helm:
         valueFiles:
           - $values/charts/tempo/values.yaml
