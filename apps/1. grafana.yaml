@@ -11,8 +11,7 @@ spec:
     - repoURL: https://github.com/GVengelen/grafana.git
       targetRevision: HEAD
       ref: values
-    - repoURL: oci://ghcr.io/grafana-community/helm-charts
-      chart: grafana
+    - repoURL: oci://ghcr.io/grafana/helm-charts/grafana
       targetRevision: "12.1.1"
       helm:
         valueFiles:
