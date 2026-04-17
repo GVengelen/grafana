@@ -63,6 +63,22 @@ nginx:
   replicas: 1
   resources: {}
 
+gateway:
+  strategy:
+    type: Recreate
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/component
+                  operator: In
+                  values:
+                    - gateway
+            topologyKey: kubernetes.io/hostname
+
 mimir:
   structuredConfig:
     multitenancy_enabled: false
