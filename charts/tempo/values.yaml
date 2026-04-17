@@ -29,7 +29,7 @@ tempo:
     enabled: true
     remoteWriteUrl: http://kube-prometheus-stack-prometheus.monitoring:9090/api/v1/write
     processor:
-      servservice_graphs:
+      service_graphs:
         wait: 30s
 
   overrides:
