@@ -70,6 +70,10 @@ mimir:
   structuredConfig:
     multitenancy_enabled: false
 
+minio:
+  serviceAccount:
+    name: mimir-minio-sa
+
 serviceAccount:
   create: false
   name: minio-sa
