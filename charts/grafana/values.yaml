@@ -72,3 +72,10 @@ grafana.ini:
     ssl_mode: disable
   feature_toggles:
     enable: externalServiceAccounts
+
+persistence:
+  enabled: true
+  type: pvc
+  accessModes:
+    - ReadWriteOnce
+  size: 1Gi
