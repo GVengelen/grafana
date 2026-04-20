@@ -10,8 +10,9 @@ This repository manages the deployment of an observability stack using ArgoCD an
 
 ## Components
 
-- Kube-prometheus-stack (Prometheus, Alertmanager, Grafana)
+- PostgreSQL (Grafana metadata database with PVC)
 - Grafana/k8s-monitoring-helm
+- Grafana/mimir
 - Grafana/loki
 - Grafana/tempo
 - Faro example app
@@ -75,8 +76,10 @@ kubectl port-forward svc/argocd-server -n argocd 8080:80
 
 And use credentials from:
 
-````bash
-ech```
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret \
+  -o jsonpath="{.data.password}" | base64 --decode; echo
+```
 
 ### Mimir
 
@@ -90,11 +93,30 @@ We want to minimize traffic between the regional clusters and our main Grafana i
 
 This is a Grafana example, so it makes sense we're going to deploy Grafana. In this example we choose for a cluster deployed instance. But you can choose to use any form of Grafana that you want, Azure Managed Grafana, Grafana Cloud, Grafana on a VM, etc.
 
+Grafana in this repo is configured to use PostgreSQL as the primary backend database for non-provisioned state (for example UI-created dashboards, folders, users, and preferences). The PostgreSQL deployment is managed by ArgoCD and uses a PVC for durable storage.
+
+Before you bootstrap or sync apps, create the database credentials secret expected by both PostgreSQL and Grafana:
+
+```bash
+kubectl -n monitoring create secret generic grafana-postgresql-auth \
+  --from-literal=postgres-password='CHANGEME_STRONG_ADMIN_PASSWORD' \
+  --from-literal=password='CHANGEME_STRONG_GRAFANA_PASSWORD'
+```
+
+If the secret already exists, replace it:
+
+```bash
+kubectl -n monitoring delete secret grafana-postgresql-auth
+kubectl -n monitoring create secret generic grafana-postgresql-auth \
+  --from-literal=postgres-password='CHANGEME_STRONG_ADMIN_PASSWORD' \
+  --from-literal=password='CHANGEME_STRONG_GRAFANA_PASSWORD'
+```
+
 If you want to login to grafana in this cluster
 
 ```bash
 kubectl port-forward svc/grafana -n monitoring 3000:80
-````
+```
 
 username: admin
 password: supersecretpassword

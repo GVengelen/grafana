@@ -1,0 +1,14 @@
+architecture: standalone
+
+auth:
+  username: grafana
+  database: grafana
+  existingSecret: grafana-postgresql-auth
+  secretKeys:
+    adminPasswordKey: postgres-password
+    userPasswordKey: password
+
+primary:
+  persistence:
+    enabled: true
+    size: 8Gi

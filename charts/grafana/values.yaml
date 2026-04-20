@@ -4,6 +4,12 @@ admin:
 adminUser: admin
 adminPassword: supersecretpassword
 
+envValueFrom:
+  GF_DATABASE_PASSWORD:
+    secretKeyRef:
+      name: grafana-postgresql-auth
+      key: password
+
 datasources:
   datasources.yaml:
     apiVersion: 1
@@ -57,5 +63,12 @@ datasources:
 grafana.ini:
   auth:
     managed_service_accounts_enabled: true
+  database:
+    type: postgres
+    host: postgresql-postgresql.monitoring.svc.cluster.local:5432
+    name: grafana
+    user: grafana
+    password: ${GF_DATABASE_PASSWORD}
+    ssl_mode: disable
   feature_toggles:
     enable: externalServiceAccounts
