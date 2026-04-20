@@ -78,9 +78,9 @@ And use credentials from:
 ````bash
 ech```
 
-### Prometheus
+### Mimir
 
-We use Prometheus as a metric datasource. We choose Prometheus over Mimir because Prometheus can be run as a single datasource via Helm. The downside of Prometheus is that is does not natively support S3-like storage solutions. For Prometheus to be able to recieve metrics from Alloy we'll need to enable the remote write endpoint. After that we're good to go!
+We use Mimir as the primary metrics backend and Grafana datasource in this stack. Mimir receives metrics from Alloy and provides the Prometheus-compatible query API for dashboards and alerting.
 
 ### Alertmanager
 
