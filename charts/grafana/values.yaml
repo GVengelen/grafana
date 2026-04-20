@@ -79,3 +79,16 @@ persistence:
   accessModes:
     - ReadWriteOnce
   size: 1Gi
+
+# Some storage backends do not allow chown from init containers.
+initChownData:
+  enabled: false
+
+podSecurityContext:
+  fsGroup: 472
+  fsGroupChangePolicy: OnRootMismatch
+
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 472
+  runAsGroup: 472
