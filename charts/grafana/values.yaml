@@ -65,7 +65,7 @@ grafana.ini:
     managed_service_accounts_enabled: true
   database:
     type: postgres
-    host: postgresql-postgresql.monitoring.svc.cluster.local:5432
+    host: postgresql.monitoring.svc.cluster.local:5432
     name: grafana
     user: grafana
     password: ${GF_DATABASE_PASSWORD}
